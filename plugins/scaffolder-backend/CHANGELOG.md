@@ -1,5 +1,14 @@
 # @backstage/plugin-scaffolder-backend
 
+## 4.3.1
+
+### Patch Changes
+
+- c85c174: Fixed a memory leak in the task event stream endpoint. If a client disconnected before the stream was opened, the backend kept polling the task events and writing them to the closed connection. For tasks that use `EXPERIMENTAL_recovery`, this continued for the lifetime of the process and memory grew until the backend ran out of memory.
+- Updated dependencies
+  - @backstage/backend-plugin-api@1.12.1
+  - @backstage/integration@2.2.1
+
 ## 4.3.0
 
 ### Minor Changes
